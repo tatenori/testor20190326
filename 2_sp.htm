@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://www.ai-orange-rescue.com/aiorangerescue/#/top -->
+<html>
+
+<head>
+  <!-- manifest.jsonを呼び出しています -->
+  <link rel="manifest" href="./manifest.json">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>AI オレンジレスキュー</title>
+  <link rel="stylesheet" type="text/css" href="./read_sp/all.css">
+  <link rel="shortcut icon" type="image/png" href="https://www.ai-orange-rescue.com/aiorangerescue/static/favicon.png">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <link href="./read_sp/appForExteranl.495fd916a697691de5764e974271f413.css" rel="stylesheet">
+  <script async="" src="./read_sp/analytics.js" charset="utf8">
+  </script>
+<script>
+
+$(function() {
+    var pagetop = $('#page_top');
+      var chatbase = $('#chat-base');
+    $(chatbase).scroll(function () {
+      console.log("1:" + $(this).scrollTop());
+        console.log("2:" + ($("#chat-base")[0].scrollHeight - chatbase.height() - 100));
+        if ($(this).scrollTop() < ($("#chat-base")[0].scrollHeight - chatbase.height() - 50)) {  //100pxスクロールしたら表示
+            pagetop.fadeIn();
+        } else {
+            pagetop.fadeOut();
+        }
+    });
+    pagetop.click(function () {
+        chatbase.animate({scrollTop: $("#chat-base")[0].scrollHeight}, 500); //0.5秒かけて最下部へ移動
+        return false;
+    });
+});
+
+</script>
+<script>
+  // service workerが有効なら、service-worker.js を登録します
+  if ('serviceWorker' in navigator) {
+    console.log("serviceWorker登録するよ")
+    navigator.serviceWorker.register('./service-worker.js').then(function() { console.log('Service Worker Registered'); });
+ }
+</script>
+</head>
+
+<body onLoad="scroll()">
+  <div id="app" class="">
+      <div id="page_top"><a href="#">入力<BR>する</a></div>
+    <div id="searchMain" class="page-background chrome" style="background-size: contain; background-position-y: 5rem;">
+      <!---->
+
+      <div class="contents">
+      <div id="main-container-fluid" class="container-fluid">
+        <div class="row height_100 bg-color">
+          <div class="conversation" catdata="[object Object]" branddata="[object Object]" searchdata="[object Object]">
+            <div class="el-dialog__wrapper" id="imageDialog" style="display: none;">
+              <div class="el-dialog" style="margin-top: 15vh;">
+                <div class="el-dialog__header">
+                  <span class="el-dialog__title">
+                  </span>
+                    <button type="button" aria-label="Close" class="el-dialog__headerbtn">
+                      <i class="el-dialog__close el-icon el-icon-close">
+                      </i>
+                    </button>
+                </div>
+              </div>
+            </div>
+            <div class="main-container">
+              <div id="chat-base" class="chat-timeline" style="background: rgba(162, 219, 168, 0.6); overflow-y: scroll !important; font-family: HiraKakuPro-W3;-webkit-overflow-scrolling: touch;overflow-scrolling: touch;">
+        <div class="header__" style="height:60px;background-color:#fff;">
+          <div class="nav">
+            <div class="nav-title">
+              <div class="nav-title-logo" style="background: url(&quot;./static/appLogonew.jpg&quot;) center center / contain no-repeat;">
+              </div>
+            </div>
+            <div><i class="fas fa-bars fa-3x hmenu"></i></div>
+            <div class="separater"></div>
+          </div>
+        </div>
+        <div class="kotei" style="height:45px;position:sticky;position:-webkit-sticky;top:0px;z-index:40000;" >
+          <div id="chat-bottom-area">
+            <div id="chat-search-form">
+            </div>
+            <div id="chat-query-tag">
+              <div>
+                <p></p>
+              </div>
+            </div>
+          </div>
+          <span id="outerBoxRefresh">
+            <button type="button" class="el-button el-button--default" id="refreshBtn" style="width: 59px;padding-left: 12px;height: 46px; border: 0px; border-radius: 0px; padding-top: 1px; background-color: rgb(44, 103, 74) !important; display: inline; font-size: 12px; color: rgb(255, 255, 255);">
+            <span>
+            <span style="margin-left: -6px;">
+            リセット</span>
+          </span>
+          </button>
+          </span>
+          <div class="switch">
+            <button type="button" class="el-button textOff el-button--default is-round" style="height: 40px; font-size: 12px; background-color: rgb(0, 0, 0); opacity: 0.5;">
+              <span>
+                <p style="margin-top: -5px; margin-left: -5px;">
+                チャット<BR>OFFにする</p>
+              </span>
+            </button>
+          </div>
+        </div>
+
+
+          <!-- 検索履歴 -->
+
+
+                  <div class="talk">
+                      <div class="spacer">
+                    </div>
+                    <div>
+                      <div class="conversation-balloon other">
+                        <div class="faces">
+                          <div>
+                            <img src="./read_sp/cocomite-smile.svg" width="37" height="41">
+                          </div>
+                        </div>
+                        <div>
+                          <div class="conversation-balloon other">
+                            <div class="message">
+                              <div>
+                                お問合せありがとうございます。<br> いま分かっている情報を画面下の入力ボックスにお願いします！
+                              </div>
+                              <!---->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="conversation-balloon my">
+                        <p class="message">安全靴</p>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="conversation-balloon other">
+                        <div class="faces">
+                          <div>
+                            <img src="./read_sp/cocomite-smile.svg" width="37" height="41">
+                          </div>
+                        </div>
+                        <div>
+                          <div class="conversation-balloon other">
+                            <div class="message">
+                              キーワードを追加しました。<font color="#337ab7">13833件ヒットしています。</font>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="conversation-balloon other">
+                        <div class="faces">
+                          <div>
+                            <img src="./read_sp/cocomite-smile.svg" width="37" height="41">
+                          </div>
+                        </div>
+                        <div>
+                          <div class="conversation-balloon other">
+                            <div class="message">
+                              <div>
+                                <div>ご希望のタイプを選んでください。</div>
+                                <li class="message-list">
+                                  短靴
+                                </li><li class="message-list">
+                                  静電安全靴
+                                </li><li class="message-list">
+                                  静電作業靴
+                                </li><li class="message-list">
+                                  食品用作業靴
+                                </li><li class="message-list">
+                                  長編上靴
+                                </li><li class="message-list">
+                                  静電安全靴(JIS規格品)
+                                </li><li class="message-list">
+                                  中編
+                                </li><li class="message-list">
+                                  半長靴
+                                </li><li class="message-list">
+                                  安全靴(半長靴・JIS規格品)
+                                </li><li class="message-list">
+                                  編上靴
+                                </li><li class="message-list">
+                                  安全長靴
+                                </li><li class="message-list">
+                                  安全長靴(JIS規格品)
+                                </li><li class="message-list">
+                                  防寒長靴
+                                </li><li class="message-list">
+                                  運動靴
+                                </li><li class="message-list">
+                                  先芯入り長靴
+                                </li> <button type="button" class="el-button el-button--default" id="nextBtn">
+                              <!---->
+                              <!---->
+                              <span>
+                              <div id="nextBtnText">次の質問</div>
+                              </span>
+                              </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="conversation-balloon other">
+                        <div class="faces">
+                          <div>
+                            <img src="./read_sp/cocomite-smile.svg" width="37" height="41">
+                          </div>
+                        </div>
+                        <div>
+                          <div class="conversation-balloon other">
+                            <div class="message">
+                              <div id="balloon-image-title">安全靴選定ガイド</div>
+                              <br> <img src="./read_sp/安全靴選定ガイド.jpg" id="balloon-image"> <br>
+                              <div id="ballon-image-wide">
+                                クリックして拡大
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="nav search-form search-form-area search-form-area-chat-on">
+                    <form class="">
+                      <div class="query-tag-div-area-chat-on">
+                        <div class="query-tag-area-chat-on">
+                          <span class="el-tag el-tag--small el-tag-one" style="background-color: rgb(143, 63, 34); display: none;">安全靴
+                          <i class="el-tag__close el-icon-close">
+                            </i>
+                            </span>
+                          <div class="el-input">
+                            <!---->
+                            <input type="text" autocomplete="off" id="inputText" maxlength="100" placeholder="" class="el-input__inner">
+                          </div>
+                        </div>
+                      </div>
+                      <button data-v-62e071fa="" type="button" class="el-button btn-question input-group-addon btn btn-default commonbtn nobtn btn-mic el-button--default" href="" role="button">
+                      <!---->
+                      <!---->
+                        <span>
+                          <div data-v-62e071fa="" class="">
+                          <span data-v-62e071fa="" class="fas fa-microphone smallFont height_100">
+                          </span>
+                          </div>
+                        </span>
+                      </button>
+                      <!---->
+                      <button type="button" class="el-button btn-w-description el-button--default is-disabled" id="submitBtn" style="padding: 5px;" disabled="disabled">
+                        <!---->
+                        <!---->
+                        <span>送信</span>
+                      </button>
+                    </form>
+                  </div>
+                  <div class="bottom_spacer" style="height:162px;">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- 検索結果画面へのリンク -->
+  <a class="linktoresult" href="URL">
+    <p>一覧を表示</p>
+  </a>
+  <!-- 商品画像 -->
+  <div class="slide-wrap">
+    <div class="slide-box">
+      <a href="URL">
+        <img src="./read_sp/p4.jpg">
+        <p>アシックス ウィンジョブ CP201 ブラック×ブラック 26.5cm</p>
+      </a>
+    </div>
+    <div class="tatesen"></div>
+    <div class="slide-box">
+      <a href="URL">
+        <img src="./read_sp/p4.jpg">
+        <p>アシックス ウィンジョブ CP201 ブラック×ブラック 26.0cm</p>
+      </a>
+    </div>
+    <div class="tatesen"></div>
+    <div class="slide-box">
+      <a href="URL">
+        <img src="./read_sp/p1.jpg">
+        <p>アシックス ウィンジョブ CP201 インディゴブルー×ホワイト 26.5cm</p>
+      </a>
+    </div>
+    <div class="tatesen"></div>
+    <div class="slide-box">
+      <a href="URL">
+        <img src="./read_sp/p1.jpg">
+        <p>アシックス ウィンジョブ CP201 インディゴブルー×ホワイト 26.0cm</p>
+      </a>
+    </div>
+    <div class="tatesen"></div>
+    <div class="slide-box">
+      <a href="URL">
+        <img src="./read_sp/p4.jpg">
+        <p>アシックス ウィンジョブ CP201 ブラック×ブラック 27.0cm</p>
+      </a>
+    </div>
+  </div>
+  <script type="text/javascript" src="./read_sp/manifest.a8feca834d698fa66148.js">
+  </script>
+  <script type="text/javascript" src="./read_sp/vendor.429add8a0f0f41f08fe7.js">
+  </script>
+  <script type="text/javascript" src="./read_sp/appForExteranl.e90ad68d3f6102512049.js">
+  </script>
+  <style media="screen">
+  h2{
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  #page_top{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 8px;
+    bottom: 170px;
+    background: #da6429;
+    opacity: 0.8;
+    border-radius: 10%;
+    z-index: 5000;
+  }
+  #page_top a{
+    color: white;
+    font-size: 14px;
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+    padding: 1px 0px 0px 6px;
+  }
+  #page_top a::before{
+    font-family: FontAwesome;
+    font-size: 25px;
+    color: #fff;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    text-align: center;
+  }
+  </style>
+</body>
+
+</html>

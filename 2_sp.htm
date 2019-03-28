@@ -58,7 +58,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
   return false;
 });
 
-var btnSave = $('#btnSave');
+var btnSave = document.getElementById('btnSave');
 btnSave.addEventListener('click', function() {
   if(deferredPrompt !== undefined) {
     // The user has had a postive interaction with our app and Chrome

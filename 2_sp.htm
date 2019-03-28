@@ -17,14 +17,7 @@
   <link href="./read_sp/appForExteranl.495fd916a697691de5764e974271f413.css" rel="stylesheet">
   <script async="" src="./read_sp/analytics.js" charset="utf8">
   </script>
-    <script>
-  var deferredPrompt;
 
-  window.addEventListener('beforeinstallprompt', function(e) {
-    console.log('beforeinstallprompt Event fired');
-    e.preventDefault();
-    return false;
-  });
 <script>
 
 $(function() {
@@ -53,8 +46,15 @@ $(function() {
     navigator.serviceWorker.register('./service-worker.js').then(function() { console.log('Service Worker Registered'); });
  }
 </script>
+    <script>
+  var deferredPrompt;
 
-
+  window.addEventListener('beforeinstallprompt', function(e) {
+    console.log('beforeinstallprompt Event fired');
+    e.preventDefault();
+    return false;
+  });
+</script>
 
 </head>
 

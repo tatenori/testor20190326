@@ -58,6 +58,7 @@ window.addEventListener('beforeinstallprompt', function(e) {
   return false;
 });
 
+var btnSave = $('#btnSave');
 btnSave.addEventListener('click', function() {
   if(deferredPrompt !== undefined) {
     // The user has had a postive interaction with our app and Chrome
@@ -140,7 +141,7 @@ btnSave.addEventListener('click', function() {
           </button>
           </span>
           <div class="switch">
-            <button type="button" class="el-button textOff el-button--default is-round" style="height: 40px; font-size: 12px; background-color: rgb(0, 0, 0); opacity: 0.5;">
+            <button id="btnSave" type="button" class="el-button textOff el-button--default is-round" style="height: 40px; font-size: 12px; background-color: rgb(0, 0, 0); opacity: 0.5;">
               <span>
                 <p style="margin-top: -5px; margin-left: -5px;">
                 チャット<BR>OFFにする</p>

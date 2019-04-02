@@ -36,9 +36,21 @@ $(function() {
         return false;
     });
 });
+history.pushState(null, null, null);
+console.log("戻るを効かさない1")
+$(window).on("popstate", function (event) {
+      console.log("戻るを効かさない2")
+    if (!event.originalEvent.state) {
+          console.log("戻るを効かさない3")
+        history.pushState(null, null, null);
+        return;
+    }
+});
 
 </script>
+<script>
 
+</script>
 
 
 
